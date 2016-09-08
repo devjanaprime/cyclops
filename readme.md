@@ -19,10 +19,13 @@ Setup
 config.php
 ----------
 this should be set up for your database:
-* define (DB_USER, "user");
-* define (DB_PASSWORD, "PASSWORD");
-* define (DB_DATABASE, "DATABASE");
-* define (DB_HOST, "HOST");
+
+``` php
+define (DB_USER, "user");
+define (DB_PASSWORD, "PASSWORD");
+define (DB_DATABASE, "DATABASE");
+define (DB_HOST, "HOST");
+```
 
 database table
 --------------
@@ -45,6 +48,7 @@ headerLinks
 ------------
 these are the link icons at the top of the page. For each you'll need a URL for the icon image and the link URL. These are listed in a JS array of objects as such.
 
+```javascript
 var headerLinks = [
     {
         iconUrl:  'ICONURL1',
@@ -55,18 +59,20 @@ var headerLinks = [
         iconLink: 'LINKURL2'
     }
 ];
-
+```
 
 pageInfo
 --------
 This object is your bsic page info. Of note is the iconSize, which dictates the size of the visor icons.
 
+```javascript
 var pageInfo = {
     title: 'devjana.net',
     author: '@devjana',
     authorLink: 'http://twitter.com/devjana',
     iconSize: 64
 };
+```
 
 verbose
 -------
@@ -80,8 +86,12 @@ database
 
 Known issues and limitations
 =============================
-![alt text](http://i0.kym-cdn.com/photos/images/facebook/000/117/012/tumblr_lj57goZvBh1qdjdp1o1_500.jpg)
+* images must be hosted off-site and linked via url
+* article detail screen doesn't show direct linked
+* no admin/edit functionality (done directly through database atm)
 
-Todo for next version
-=====================
-![alt text](http://i0.kym-cdn.com/photos/images/facebook/000/117/012/tumblr_lj57goZvBh1qdjdp1o1_500.jpg)
+Todos
+=====
+* add display for article direct link in article detail
+* require at least 128 characters in body text
+* check for valid url for image url (string includes: http, png, gif, jpg, etc)
