@@ -39,7 +39,40 @@ You'll really only need one table with the following columns:
 
 visor.js
 --------
-![alt text](http://i0.kym-cdn.com/photos/images/facebook/000/117/012/tumblr_lj57goZvBh1qdjdp1o1_500.jpg)
+You can think of 'visor.js' as the config file for Cyclops. If you are familiar wih javascript you'll have no problem editing this file to work for you.
+
+headerLinks
+------------
+these are the link icons at the top of the page. For each you'll need a URL for the icon image and the link URL. These are listed in a JS array of objects as such.
+
+var headerLinks = [
+    {
+        iconUrl:  'ICONURL1',
+        iconLink: 'LINKURL1'
+    },
+    {
+        iconUrl:  'ICONURL2',
+        iconLink: 'LINKURL2'
+    }
+];
+
+
+pageInfo
+--------
+This object is your bsic page info. Of note is the iconSize, which dictates the size of the visor icons.
+
+var pageInfo = {
+    title: 'devjana.net',
+    author: '@devjana',
+    authorLink: 'http://twitter.com/devjana',
+    iconSize: 64
+};
+
+verbose
+-------
+if 'verbose' is set to true you'll see client side console logs for almost all actions. This is mostly for me while debugging. Likely, you'll want this set to 'false' before you put anything out there for public consumption.
+
+var verbose = true;
 
 database
 --------
