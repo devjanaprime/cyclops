@@ -22,7 +22,7 @@
             $jsonOut = $jsonOut . '"title": "' . $row["title"] . '",';
             $jsonOut = $jsonOut . '"img_url": "' . $row["img_url"] . '",';
             $jsonOut = $jsonOut . '"link_url": "' . $row["link_url"] . '",';
-            $jsonOut = $jsonOut . '"twitter_embed": "' . $row["twitter_embed"] . '",';
+            $jsonOut = $jsonOut . '"link_text": "' . $row["link_text"] . '",';
             $jsonOut = $jsonOut . '"youtube_embed": "' . $row["youtube_embed"] . '",';
             $jsonOut = $jsonOut . '"body": "' . $row["body"] . '",';
             $jsonOut = $jsonOut . '"tag0": "' . $row["tag0"] . '",';

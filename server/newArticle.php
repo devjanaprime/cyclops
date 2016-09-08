@@ -4,7 +4,6 @@
   $body = $_POST["bodyIn"];
   $link_url = $_POST["linkUrlIn"];
   $link_text = $_POST["linkTextIn"];
-  $twitter_embed = $_POST["twitter_embedIn"];
   $youtube_embed = $_POST["youtube_embedIn"];
   $tag0 = $_POST["tag0In"];
   $tag1 = $_POST["tag1In"];

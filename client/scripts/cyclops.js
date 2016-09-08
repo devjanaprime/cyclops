@@ -21,6 +21,7 @@ ascii art from http://www.chris.com/ascii/index.php?art=people/body%20parts/eyes
 *********************************************************************************/
 if ( verbose ) console.log('siteMan.js sourced');
 var articleMode = false;
+var displayArticleId = -1;
 //jQ?
 $( document ).ready( function(){
 	 if( verbose ) console.log( 'doc ready' );
@@ -71,7 +72,7 @@ var assembleCard = function( article, clickTags ){
 	}
 	if( clickTags ){
 		// clickable tags?
-		 cardText += '<h6>[ <tagOpener class="tagButton" data-tag=' + article.tag0 + '>' + article.tag0 + '</tagOpener>, <tagOpener class="tagButton" data-tag=' + article.tag1 + '>' + article.tag1 + '</tagOpener>, <tagOpener class="tagButton" data-tag=' + article.tag2 + '>' + article.tag2 + '</tagOpener> ]</h6>';
+		 cardText += '<h6>[ <a href="#" class="tagButton" data-tag=' + article.tag0 + '>' + article.tag0 + '</a>, <a  href="#" class="tagButton" data-tag=' + article.tag1 + '>' + article.tag1 + '</a>, <a href="#" class="tagButton" data-tag=' + article.tag2 + '>' + article.tag2 + '</a> ]</h6>';
 	 } // end cickable Tags
 	 else{
 		 // not clickable tags
@@ -83,7 +84,18 @@ var assembleCard = function( article, clickTags ){
 	return cardText;
 } // end assembleCard
 
+
+var displayArticleFirst = function ( index ) {
+	console.log( 'in displayArticleFirst:', index );
+	displayArticleId = index;
+	console.log( 'in displayArticleFirst:', displayArticleId );
+}
+
 var displayArticle = function ( index ) {
+	if( displayArticleId > 0 ){
+		displayArticleId = -1;
+	} // end clear displayArticleId
+	console.log( 'in displayArticle', index );
     if ( articleMode ) {
         if ( verbose ) console.log( 'exiting article mode' );
         displayArticleList();
@@ -104,13 +116,13 @@ var displayArticle = function ( index ) {
 				articleText += '<p>' + article.body + '</p>';
 				// youtube embed?
 				if( article.youtube_embed != '' && article.youtube_embed != undefined){
-					articleText += '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + article.youtube_embed + '" frameborder="0" allowfullscreen></iframe>';
+					articleText += '<center><iframe width="560" height="315" src="https://www.youtube.com/embed/' + article.youtube_embed + '" frameborder="0" allowfullscreen></iframe></center>';
 				}
 				// link?
 				if( article.link_url != '' && article.link_url != undefined ){
-					articleText += '<p><b><a href="' + article.link_url + '">' + article.link_text + '</a></b></p>';
+					articleText += '<center><p><b><a href="' + article.link_url + '">' + article.link_text + '</a></b></p></center>';
 				}
-				articleText += '<h6>[ ' + article.tag0 +', ' + article.tag1 + ', ' + article.tag2 + ' ]</h6>'
+				articleText += '<center><h6>[ ' + article.tag0 +', ' + article.tag1 + ', ' + article.tag2 + ' ]</h6></center>'
 				articleText += '</div>'; // end articleModal
 				articleText += '</div>'; // end w3-modal-content
 				articleText += '</div>'; // end w3-container
@@ -165,7 +177,7 @@ var displayTopper = function(){
 	 var topperText = '<center><h1>' + pageInfo.title + '</h1></center><center>';
 	 // link icons
 	 for ( var i = 0; i < headerLinks.length; i++ ) {
-	     topperText += '<a href="' + headerLinks[i].iconLink + '"><img src="' + headerLinks[i].iconUrl + '" style="margin:16px" width=' + pageInfo.iconSize + ' height=' + pageInfo.iconSize + '></a>';
+	     topperText += '<a href="' + headerLinks[i].iconLink + '"><img src="' + headerLinks[i].iconUrl + '" style="margin:16px" width=' + pageInfo.iconSize + ' height=' + pageInfo.iconSize + ' class="w3-hover-opacity"></a>';
 	 } // end header links loop
 	 topperText += '</center>';
 	 $( '#topper' ).html( topperText );
@@ -193,5 +205,8 @@ var getPageInfo = function () {
       } // end ajax
   }).done( function(){
       displayArticleList();
+			if( displayArticleId >= 0 ){
+				displayArticle( displayArticleId );
+			} //end displayArticleId check
   });
 } // end get page info
