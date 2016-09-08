@@ -1,5 +1,5 @@
 
-![alt text](http://static.srcdn.com/wp-content/uploads/cyclops-x-man.jpg)
+![Cyclops](http://static.srcdn.com/wp-content/uploads/cyclops-x-man.jpg)
 
 Cyclops
 =======
@@ -78,11 +78,13 @@ verbose
 -------
 if 'verbose' is set to true you'll see client side console logs for almost all actions. This is mostly for me while debugging. Likely, you'll want this set to 'false' before you put anything out there for public consumption.
 
+```javascript
 var verbose = true;
+```
 
 database
 --------
-![alt text](http://i0.kym-cdn.com/photos/images/facebook/000/117/012/tumblr_lj57goZvBh1qdjdp1o1_500.jpg)
+![coming soon](http://i0.kym-cdn.com/photos/images/facebook/000/117/012/tumblr_lj57goZvBh1qdjdp1o1_500.jpg)
 
 Known issues and limitations
 =============================
@@ -95,3 +97,7 @@ Todos
 * add display for article direct link in article detail
 * require at least 128 characters in body text
 * check for valid url for image url (string includes: http, png, gif, jpg, etc)
+
+Sites using cyclops
+===================
+![coming soon](http://i0.kym-cdn.com/photos/images/facebook/000/117/012/tumblr_lj57goZvBh1qdjdp1o1_500.jpg)

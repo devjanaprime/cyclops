@@ -1,7 +1,7 @@
 // cyclops
 // by @devjana
 // putsing around with a JQuery, PHP, MYSQL stack to try and make a decent, light CMS in a weekend
-// last updated 9-3-2016
+// last updated 9-8-2016
 /********************************************************************************
         . .   :` . :   .  .'.' '....xxxxx...,'. '   ' ."""YWMWMWMWMWMWMWMWMWMW+
      ; . ` .  . : . .' :  . ..XXXXXXXXXXXXXXXXXXXXx.    `     . "YWMWMWMWMWMWMW
