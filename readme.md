@@ -42,7 +42,7 @@ You'll really only need one table with the following columns:
 
 visor.js
 --------
-You can think of 'visor.js' as the config file for Cyclops. If you are familiar wih javascript you'll have no problem editing this file to work for you.
+You can think of 'visor.js' as the config file for Cyclops. If you are familiar with javascript you'll have no problem editing this file to work for you.
 
 headerLinks
 ------------
