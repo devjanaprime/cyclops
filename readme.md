@@ -63,7 +63,7 @@ var headerLinks = [
 
 pageInfo
 --------
-This object is your bsic page info. Of note is the iconSize, which dictates the size of the visor icons.
+This object is your basic page info. Of note is the iconSize, which dictates the size of the visor icons.
 
 ```javascript
 var pageInfo = {
@@ -76,7 +76,7 @@ var pageInfo = {
 
 verbose
 -------
-if 'verbose' is set to true you'll see client side console logs for almost all actions. This is mostly for me while debugging. Likely, you'll want this set to 'false' before you put anything out there for public consumption.
+if ```verbose``` is set to true you'll see client side console logs for almost all actions. This is mostly for me while debugging. Likely, you'll want this set to ```false``` before you put anything out there for public consumption.
 
 ```javascript
 var verbose = true;
