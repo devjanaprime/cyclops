@@ -205,6 +205,7 @@ var getPageInfo = function () {
       } // end ajax
   }).done( function(){
       displayArticleList();
+			// check if auto-opening an article
 			if( displayArticleId >= 0 ){
 				displayArticle( displayArticleId );
 			} //end displayArticleId check
