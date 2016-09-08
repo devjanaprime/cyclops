@@ -49,4 +49,6 @@ Known issues and limitations
 =============================
 ![alt text](http://i0.kym-cdn.com/photos/images/facebook/000/117/012/tumblr_lj57goZvBh1qdjdp1o1_500.jpg)
 
-So yeah, there's stuff to be done still...
+Todo for next version
+=====================
+![alt text](http://i0.kym-cdn.com/photos/images/facebook/000/117/012/tumblr_lj57goZvBh1qdjdp1o1_500.jpg)
