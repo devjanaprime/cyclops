@@ -1,7 +1,7 @@
 // cyclops
 // by @devjana
 // putsing around with a JQuery, PHP, MYSQL stack to try and make a decent, light CMS in a weekend
-// last updated 9-8-2016
+// last updated 9-9-2016
 /********************************************************************************
         . .   :` . :   .  .'.' '....xxxxx...,'. '   ' ."""YWMWMWMWMWMWMWMWMWMW+
      ; . ` .  . : . .' :  . ..XXXXXXXXXXXXXXXXXXXXx.    `     . "YWMWMWMWMWMWMW
@@ -28,10 +28,12 @@ $( document ).ready( function(){
 	 getPageInfo();
 	 displayTopper();
 	 displayBottomer();
-	 // article close
-	 $( '#articleDiv' ).on( 'click', function(){
-		 displayArticle( 0 );
-	 }); // end close open article
+
+	 $( 'body' ).on( 'click', '.w3-closebtn', function(){
+		 if ( verbose ) console.log( 'w3-closebtn on click ');
+		 articleMode = false;
+	 });
+
     // article click
     $( 'body' ).on( 'click', '#articleOpener', function(){
         if ( verbose ) console.log( 'article clicked', $( this ).attr( 'data-index' ) );
@@ -55,21 +57,15 @@ var assembleCard = function( article, clickTags ){
 	cardText = '';
 	cardText += '<div class="col-sm-6">';
 	cardText += '<div class="w3-col w3-container m6">';
-	cardText += '<div class="w3-card-12">';
+	cardText += '<div class="w3-hover-shadow">';
 	cardText += '<div class="w3-container w3-center" id="articleOpener" data-index=' + index + '>';
-	cardText += '<h2>' + article.title + '</h2>';
+	cardText += '<center><h2>' + article.title + '</h2></center>';
 	cardText += '</div>'; // close title div
-	cardText += '<img id="articleOpener" data-index=' + index + ' src="' + article.img_url + '" class="w3-hover-opacity" alt="' + article.title + ' image" style="width:100%">'; // article image
+	cardText += '<img id="articleOpener" data-index=' + index + ' src="' + article.img_url + '" alt="' + article.title + ' image" style="width:100%">'; // article image
 	cardText += '<div class="w3-container w3-center">';
-	if( article.body.length > 128 ){
-		// truncate if too long
-		var tempBody = article.body.slice( 0, 124 ) + '...<b>MORE</b>'
-		cardText += '<p id="articleOpener" data-index=' + index + '>' + tempBody + '</p>';
-	}
-	else{
-		// not long, show whole thing
-		cardText += '<p id="articleOpener" data-index=' + index + '>' + article.body + '</p>';
-	}
+	/// - not showing body - ///
+	// var tempBody = article.body.slice( 0, 61 ) + '...';
+	// cardText += '<p id="articleOpener" data-index=' + index + '>' + tempBody + '</p>';
 	if( clickTags ){
 		// clickable tags?
 		 cardText += '<h6>[ <a href="#" class="tagButton" data-tag=' + article.tag0 + '>' + article.tag0 + '</a>, <a  href="#" class="tagButton" data-tag=' + article.tag1 + '>' + article.tag1 + '</a>, <a href="#" class="tagButton" data-tag=' + article.tag2 + '>' + article.tag2 + '</a> ]</h6>';
@@ -111,7 +107,7 @@ var displayArticle = function ( index ) {
 				articleText += '<div class="w3-modal-content w3-animate-top">';
 				articleText += '<div class="w3-container">';
 				articleText += '<span onclick="document.getElementById(\'articleModal\').style.display=\'none\'" class="w3-closebtn">&times;</span>';
-				articleText += '<h2>' + article.title + '</h2>';
+				articleText += '<center><h2>' + article.title + '</h2><p>Direct Link: ' + pageInfo.url + '?id=' + index + '</p></center>';
 				articleText += '<img src="' + article.img_url + '" width=100%>';
 				articleText += '<p>' + article.body + '</p>';
 				// youtube embed?

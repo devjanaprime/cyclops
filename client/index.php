@@ -3,11 +3,11 @@
   <head>
        <title>Site Title</title>
        <!-- jQuery -->
-       <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+       <script src="vendors/jquery-3.0.0.min.js" charset="utf-8"></script>
        <!-- W3 CSS -->
-        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-        <!-- Cyclops -->
-        <script language="JavaScript" type="text/javascript" src='scripts/visor.js'></script>
+       <link rel="stylesheet" href="vendors/w3.css">
+       <!-- Cyclops -->
+       <script language="JavaScript" type="text/javascript" src='scripts/visor.js'></script>
        <script language="JavaScript" type="text/javascript" src='scripts/cyclops.js'></script>
  </head>
   <?php

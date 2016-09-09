@@ -89,13 +89,10 @@ database
 Known issues and limitations
 =============================
 * images must be hosted off-site and linked via url
-* article detail screen doesn't show direct linked
 * no admin/edit functionality (done directly through database atm)
 
 Todos
 =====
-* add display for article direct link in article detail
-* require at least 128 characters in body text
 * check for valid url for image url (string includes: http, png, gif, jpg, etc)
 
 Sites using cyclops

@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <!-- jQuery -->
+  <script src="vendors/jquery-3.0.0.min.js" charset="utf-8"></script>
+  <!-- W3 CSS -->
+  <link rel="stylesheet" href="vendors/w3.css">
+  <script src="scripts/addNewArticle.js" charset="utf-8"></script>
 <body>
   <div class="w3-container w3-blue">
     <h2>Create article</h2>
   </div>
-  <form class="w3-container" action="../server/newArticle.php" method="post">
+  <div class="w3-container">
     <p><label>Title:</label>
     <input class="w3-input" type="text" name="titleIn" id='titleIn' ></p>
-    <p><label>Image URL:</label>
+    <p><label>Image URL (upload eventually):</label>
     <input class="w3-input" type="text" name="img_urlIn" id='img_urlIn' ></p>
-    <p><label>Body:</label>
+    <p><label>Body (128 characters min.):</label>
     <input class="w3-input" type="text" name="bodyIn" id='bodyIn' ></p>
     <p><label>Link URL:</label>
     <input class="w3-input" type="text" name="linkUrlIn" id='linkUrlIn' ></p>
     <p><label>Link Text:</label>
     <input class="w3-input" type="text" name="linkTextIn" id='linkTextIn' ></p>
-    <p><label>Youtube ID:</label>
+    <p><label>Youtube ID (just th id, not the whole URL):</label>
     <input class="w3-input" type="text" name="youtube_embedIn" id='youtube_embedIn' ></p>
     <p><label>Tag0:</label>
     <input class="w3-input" type="text" name="tag0In" id='tag0In' ></p>
@@ -25,7 +29,7 @@
     <input class="w3-input" type="text" name="tag1In" id='tag1In' ></p>
     <p><label>Tag2:</label>
     <input class="w3-input" type="text" name="tag2In" id='tag2In' ></p>
-    <input type="submit" value="Submit">
-  </form>
+    <button id='addNewButton'>Submit new article</button>
+  </div>
 </body>
 </html>
