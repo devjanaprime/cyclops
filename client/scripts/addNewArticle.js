@@ -19,7 +19,7 @@ $( document ).ready( function(){
     var errorText ='';
     if( title == '') errorText+= 'Title cannot be left blank. ';
     if( linkUrl != '' && ( linkUrl.indexOf( 'http' ) < 0 || linkUrl.indexOf( '.' ) < 0  ) ) errorText += "Invalid Link URL. ";
-    if( body.length < 128 ) errorText += 'Body text must be at least 128 characters long. ';
+    if( body.length < 64 ) errorText += 'Body text must be at least 64 characters long. ';
     if( youtube_embed != '' && youtube_embed.indexOf( 'youtube' ) > 0 ) errorText += 'Invalid Youtube ID. ';
     if( tag0.indexOf( ' ' ) > 0 || tag1.indexOf( ' ' ) > 0 || tag2.indexOf( ' ' ) > 0 ) errorText += 'Tags cannot have spaces. ';
     if( errorText != '' ){
