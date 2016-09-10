@@ -15,6 +15,13 @@
       echo "Failed to connect to server: " . mysqli_connect_error();
     }
     else{
+      // upload pic
+      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+          echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+      } else {
+          echo "Sorry, there was an error uploading your file.";
+      }
+
       $title = $connect->real_escape_string( $title );
       $body = $connect->real_escape_string( $body );
       $sql = "INSERT INTO articles ( `title`, `img_url`, `body`, `link_url`, `youtube_embed`, `link_text`, `tag0`, `tag1`, `tag2` )
