@@ -94,9 +94,10 @@ Known issues and limitations
 Todos
 =====
 * set decent size of youtube video on article display
+* limit file upload dimensions to 16:9
 * image upload
 * edit existing articles
-* admin dashboard
+* delete existing articles
 
 Sites using cyclops
 ===================
