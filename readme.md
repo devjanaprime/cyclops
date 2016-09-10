@@ -94,8 +94,8 @@ Known issues and limitations
 Todos
 =====
 * set decent size of youtube video on article display
-* check for valid url for image url (string includes: http, png, gif, jpg, etc. eventually replaced by image upload?)
-* edit existing
+* image upload
+* edit existing articles
 * admin dashboard
 
 Sites using cyclops
