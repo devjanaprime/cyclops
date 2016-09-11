@@ -122,7 +122,7 @@ var displayArticle = function ( index ) {
 				articleText += '<p>' + article.body + '</p>';
 				// youtube embed?
 				if( article.youtube_embed != '' && article.youtube_embed != undefined){
-					articleText += '<center><iframe width=100% height=67% src="https://www.youtube.com/embed/' + article.youtube_embed + '" frameborder="0" allowfullscreen></iframe></center>';
+					articleText += '<center><iframe width=100% height=86% src="https://www.youtube.com/embed/' + article.youtube_embed + '" frameborder="0" allowfullscreen></iframe></center>';
 				} // end youtube check
 				// link?
 				if( article.link_url != '' && article.link_url != undefined ){

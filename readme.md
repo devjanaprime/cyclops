@@ -88,14 +88,12 @@ database
 
 Known issues and limitations
 =============================
-* images must be hosted off-site and linked via url
-* no admin/edit functionality (done directly through database atm)
+* no admin/edit functionality (done directly through database atm, ugh)
 
 Todos
 =====
-* set decent size of youtube video on article display
+* image upload modal
 * limit file upload dimensions to 16:9
-* image upload
 * edit existing articles
 * delete existing articles
 
