@@ -21,24 +21,13 @@ config.php
 this should be set up for your database:
 
 ``` php
-define (DB_USER, "user");
+define (DB_USER, "USERNAME");
 define (DB_PASSWORD, "PASSWORD");
 define (DB_DATABASE, "DATABASE");
 define (DB_HOST, "HOST");
 ```
 
-database table
---------------
-You'll really only need one table with the following columns:
-* title
-* img_url
-* body
-* link_url
-* youtube_embed
-* link_text
-* tag0
-* tag1
-* tag2
+In the scripts currently this table is named "articles"
 
 visor.js
 --------
@@ -84,14 +73,28 @@ var verbose = true;
 
 database
 --------
-![coming soon](http://i0.kym-cdn.com/photos/images/facebook/000/117/012/tumblr_lj57goZvBh1qdjdp1o1_500.jpg)
+You'll need an SQL database with only one table named "articles" that has the following columns:
+* id (key, auto-increment)
+* created
+* title
+* img_url
+* body
+* link_url
+* youtube_embed
+* link_text
+* tag0
+* tag1
+* tag2
 
 Known issues and limitations
 =============================
 * no admin/edit functionality (done directly through database atm, ugh)
+* no special renames for uploads causes problems with multiple file uploads of the same name
 
 Todos
 =====
+* date created for articles
+* limit # of articles shown (more)
 * image upload modal
 * limit file upload dimensions to 16:9
 * edit existing articles
