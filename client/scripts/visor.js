@@ -57,7 +57,10 @@ var headerLinks = [
         iconUrl: 'http://seeklogo.com/images/Y/youtube-square-logo-3F9D037665-seeklogo.com.gif',
         iconLink: 'https://www.youtube.com/user/devjana'
     },
-
+    {
+        iconUrl: 'http://www.gamasutra.com/db_area/images/news/2012/Dec/183984/gamasutra.jpg',
+        iconLink: 'http://www.gamasutra.com/blogs/DevJana/896049/'
+    },
     {
         iconUrl: 'http://www.steverichey.com/wp-content/uploads/2013/11/ItchIO_Gradients.png',
         iconLink: 'https://devjana.itch.io'

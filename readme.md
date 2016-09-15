@@ -93,12 +93,7 @@ Known issues and limitations
 
 Todos
 =====
-* date created for articles
-* limit # of articles shown (more)
-* image upload modal
-* limit file upload dimensions to 16:9
-* edit existing articles
-* delete existing articles
+* moved to 'Projects' 9-14-2016 because the new GitHub features are AMAAAAAZING
 
 Sites using cyclops
 ===================
