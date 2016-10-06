@@ -12,11 +12,12 @@
   </div>
   <div class="w3-container">
     <p><label>Image (16x9 aspect ratio, max 2.5 MB):</label>
-    <form action="../server/upload.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <input type="submit" value="Upload Image" name="submit">
-    </form>
-    <input class="w3-input" type="text" name="img_urlIn" id='img_urlIn' ></p>
+    <?php
+    if($_GET["f"] == ''){
+      echo '<form action="../server/upload.php" method="post" enctype="multipart/form-data"><input type="file" name="fileToUpload" id="fileToUpload"><input type="submit" value="Upload Image" name="submit"></form>';
+    }
+    ?>
+    <input class="w3-input" type="text" name="img_urlIn" id='img_urlIn' value='<?php echo $_GET["f"] ?>'></p>
     <p><label>Title:</label>
     <input class="w3-input" type="text" name="titleIn" id='titleIn' ></p>
     <p><label>Body Text (no line breaks):</label>
