@@ -72,8 +72,11 @@ var verbose = true;
 ```
 
 database
---------
-You'll need an SQL database with only one table named "articles" that has the following columns:
+========
+You'll need an SQL database with a couple tables:
+
+"articles" table
+----------------
 * id (key, auto-increment)
 * created
 * title
@@ -86,14 +89,19 @@ You'll need an SQL database with only one table named "articles" that has the fo
 * tag1
 * tag2
 
+
+"users" table
+-------------
+* id (key, auto-increment)
+* email
+* pass
+* role
+
 Known issues and limitations
 =============================
-* no admin/edit functionality (done directly through database atm, ugh)
-* no special renames for uploads causes problems with multiple file uploads of the same name
-
-Todos
-=====
-* moved to 'Projects' 9-14-2016 because the new GitHub features are AMAAAAAZING
+* no edit functionality
+* no actual "log in" working yet
+* it's just kinda clunky
 
 Sites using cyclops
 ===================
