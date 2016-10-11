@@ -31,8 +31,12 @@ $( document ).ready( function(){
   }); // end logIn on click
 
 
-  $( 'body' ).on( 'click', '.viewArticleButton', function(){
-    console.log( 'viewArticleButton clicked for:', $( this ).attr( 'id' ) );
+  $( 'body' ).on( 'click', '.moveArticleDownButton', function(){
+    console.log( 'moveArticleDownButton clicked for:', $( this ).attr( 'id' ) );
+  }); // end deleteArticleButton
+
+  $( 'body' ).on( 'click', '.moveArticleUpButton', function(){
+    console.log( 'moveArticleUpButton clicked for:', $( this ).attr( 'id' ) );
   }); // end deleteArticleButton
 
   getArticles();
@@ -46,9 +50,16 @@ var clearInputs = function(){
 
 var displayArticlesList = function( articles ){
   $( '#articlesList' ).empty();
-  console.log( articles );
-  for ( var i = 0; i < articles.length; i++ ) {
-    $( '#articlesList' ).append( '<p><button class="deleteArticleButton" id="' + articles[i].id + '">Delete</button><button class="moveArticleUpButton" id="' + articles[i].id + '">^</button><button class="moveArticleDownButton" id="' + articles[i].id + '">v</button><b>' + articles[i].title + '</b></p>' );
+
+  if( sessionStorage.loggedIn == 'true' ){
+    $( '#articlesList' ).append( '<hr><h2>Current Articles:</h2>' );
+    for ( var i = 0; i < articles.length; i++ ) {
+      $( '#articlesList' ).append( '<p><img src="' + pageInfo.trashcan + '" width=32 height=32px class="w3-hover-opacity deleteArticleButton" id="' + articles[i].id + '"><img src="' + pageInfo.upArrow + '" width=32 height=32px class="w3-hover-opacity moveArticleUpButton" id="' + articles[i].id + '"><img src="' + pageInfo.downArrow + '" width=32 height=32px class="w3-hover-opacity moveArticleDownButton" id="' + articles[i].id + '"><b>' + articles[i].title + '</b></p>' );
+    }
+    $( '#articlesList' ).append( '<hr>' );
+  }
+  else{
+    $( '#articlesList' ).append( '<hr><h2>Please Log In</h2><hr>' ); 
   }
 }; //end displayArticlesList
 

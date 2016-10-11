@@ -61,11 +61,15 @@ var pageInfo = {
     iconSize: 64,
     maxDisplay: 20,
     title: 'devjana.net',
-    url: 'http://devjana.net/cyclops/client/'
+    url: 'http://devjana.net/cyclops/client/',
+    upArrow: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-128.png',
+    downArrow: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-down-b-128.png',
+    trashcan: 'http://findicons.com/files/icons/1580/devine_icons_part_2/128/trash_recyclebin_empty_closed.png'
 };
 ```
 * icon size: square icon size for the topper icons
 * maxDisplay: default number of articles to be shown
+* up/down arrows, and trashcan are the icons used on the admin page
 * the others should be self-explanatory
 
 verbose

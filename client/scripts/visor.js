@@ -1,7 +1,6 @@
 // cyclops visor
 // by @devjana
-// config file for cyclops siteManager
-// last updated 9-3-2016
+// config file for cyclops CMS
 /***********************************************
                 _.-'     .' .' .' '-.
               .'  .'  .' .'  .'_ --. '.
@@ -86,7 +85,10 @@ var pageInfo = {
     iconSize: 64,
     maxDisplay: 20,
     title: 'devjana.net',
-    url: 'http://devjana.net/cyclops/client/'
+    url: 'http://devjana.net/cyclops/client/',
+    upArrow: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-128.png',
+    downArrow: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-down-b-128.png',
+    trashcan: 'http://findicons.com/files/icons/1580/devine_icons_part_2/128/trash_recyclebin_empty_closed.png'
 };
 // verbose mode for client side console logs?
 var verbose = true;
