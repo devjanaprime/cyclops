@@ -44,12 +44,6 @@ $( document ).ready( function(){
     if ( verbose ) console.log( 'article clicked', $( this ).attr( 'data-index' ) );
     displayArticle( $( this ).attr( 'data-index' ) );
 	});
-	// logIn button
-	$( 'body' ).on( 'click', '#logIn', function(){
-		if ( verbose ) console.log( 'logInButton clicked' );
-		sessionStorage.loggedIn = true;
-		displayBottomer();
-	}); // end logInButton on click
 	// logOut button
 	$( 'body' ).on( 'click', '#logOut', function(){
 		if ( verbose ) console.log( 'logOut clicked' );
@@ -81,7 +75,7 @@ var assembleCard = function( article, clickTags ){
 	if( article.youtube_embed != '' && article.youtube_embed != undefined && article.img_url == '' ){
 		cardText += '<iframe width=100% src="https://www.youtube.com/embed/' + article.youtube_embed + '" frameborder="0" allowfullscreen class="cardImg"></iframe>'; // youtube preview
 	}else{
-		cardText += '<img id="articleOpener" data-index=' + index + ' src="' + article.img_url + '" alt="' + article.title + ' image" class="cardImg" style="width:100%">'; // article image
+		cardText += '<img id="articleOpener" data-index=' + index + ' src="uploads/' + article.img_url + '" alt="' + article.title + ' image" class="cardImg" style="width:100%">'; // article image
 	}
 	cardText += '<div class="w3-container w3-center">';
 	/// - not showing body - ///
@@ -187,9 +181,6 @@ var displayBottomer = function(){
 	 $( '#bottomer' ).append( attributionText );
 	 if( sessionStorage.loggedIn == 'true' ){
 		 var adminText = '<center><p><a class="w3-hover-opacity" id="logOut">Log Out</a> - <a class="w3-hover-opacity" id="images" href="imageUpload.html">Images</a> - <a class="w3-hover-opacity" id="newArticle" href="create.html">New Article</a></p>'
-	 }
-	 else{
-		 adminText = '<center><p><a class="w3-hover-opacity" id="logIn">Admin Log In</a></p>'
 	 }
 	 $( '#bottomer' ).append( adminText );
 } // end display bottomer

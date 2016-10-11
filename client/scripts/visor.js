@@ -46,7 +46,7 @@ var headerLinks = [
         iconLink: 'https://github.com/devjanaprime'
     },
     {
-        iconUrl: 'https://www.facebookbrand.com/img/fb-art.jpg',
+        iconUrl: 'https://www.facebook.com/images/fb_icon_325x325.png',
         iconLink: 'https://www.facebook.com/devnari'
     },
     {

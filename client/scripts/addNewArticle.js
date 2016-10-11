@@ -7,7 +7,7 @@ $( document ).ready( function(){
     console.log( 'addNewButton on click');
     // get user input
     var title = $( '#titleIn' ).val();
-    var img_url = 'uploads/' + $( '#imageSelection' ).val();
+    var img_url = $( '#imageSelection' ).val();
     var body = $( '#bodyIn' ).val();
     var linkUrl = $( '#linkUrlIn' ).val();
     var linkText = $( '#linkTextIn' ).val();
@@ -19,7 +19,6 @@ $( document ).ready( function(){
     var errorText ='';
     if( title == '') errorText+= 'Title cannot be left blank. ';
     if( linkUrl != '' && ( linkUrl.indexOf( 'http' ) < 0 || linkUrl.indexOf( '.' ) < 0  ) ) errorText += "Invalid Link URL. ";
-    if( body.length < 64 ) errorText += 'Body text must be at least 64 characters long. ';
     if( youtube_embed != '' && youtube_embed.indexOf( 'youtube' ) > 0 ) errorText += 'Invalid Youtube ID. ';
     if( tag0.indexOf( ' ' ) > 0 || tag1.indexOf( ' ' ) > 0 || tag2.indexOf( ' ' ) > 0 ) errorText += 'Tags cannot have spaces. ';
     if( errorText != '' ){
@@ -47,22 +46,12 @@ $( document ).ready( function(){
         data: newArticle,
         success: function ( data ){
           console.log( 'ajax success:', data );
-          if( data =='saved'){
-            alert( 'Article saved successfully' );
+            alert( data );
             clearInputs();
-          } // end data saved correctly
-          else{
-            alert( 'uh oh... something no worky...' );
-          } // end data not saved correctly
         } // end success
       }); //end ajax
     } // end no errors
   }); // end addNewButton on click
-
-  $( '#selectImage' ).on( 'click', function(){
-    console.log( 'in selectImage' );
-    getImages();
-  }); // end selectImage
 
   $( "#imageSelection" ).change( function() {
     var img = $( "#imageSelection" ).val();
