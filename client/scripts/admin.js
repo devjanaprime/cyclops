@@ -1,7 +1,10 @@
 $( document ).ready( function(){
-  console.log( 'doc ready' );
-  // get input and check if OK
-  $( '#loginButton' ).on( 'click', function(){
+
+  $( 'body' ).on( 'click', '.deleteArticleButton', function(){
+    console.log( 'deleteArticleButton clicked for:', $( this ).attr( 'id' ) );
+  }); // end deleteArticleButton
+
+  $( 'body' ).on( 'click', '#loginButton', function(){
   // get user input
   var email = $( '#emailIn' ).val();
   var pass = $( '#passwordIn' ).val();
@@ -22,9 +25,17 @@ $( document ).ready( function(){
         alert( 'logged in now, yo' );
         sessionStorage.loggedIn = 'true';
         clearInputs();
+        getArticles();
       } // end success
     }); //end ajax
-  }); // end addNewButton on click
+  }); // end logIn on click
+
+
+  $( 'body' ).on( 'click', '.viewArticleButton', function(){
+    console.log( 'viewArticleButton clicked for:', $( this ).attr( 'id' ) );
+  }); // end deleteArticleButton
+
+  getArticles();
 }); // end doc ready
 
 var clearInputs = function(){
@@ -32,3 +43,21 @@ var clearInputs = function(){
   $( '#emailIn' ).val( '' );
   $( '#passwordIn' ).val( '' );
 }; //end clearInputs
+
+var displayArticlesList = function( articles ){
+  $( '#articlesList' ).empty();
+  console.log( articles );
+  for ( var i = 0; i < articles.length; i++ ) {
+    $( '#articlesList' ).append( '<p><button class="deleteArticleButton" id="' + articles[i].id + '">Delete</button><button class="moveArticleUpButton" id="' + articles[i].id + '">^</button><button class="moveArticleDownButton" id="' + articles[i].id + '">v</button><b>' + articles[i].title + '</b></p>' );
+  }
+}; //end displayArticlesList
+
+var getArticles = function(){
+  $.ajax({
+    url:'../server/getArticles.php',
+    type: 'GET',
+    success: function ( data ){
+      displayArticlesList( JSON.parse( data ).articles );
+    } // end success
+  }); //end ajax
+}; // end getArticles

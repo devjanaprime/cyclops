@@ -19,6 +19,7 @@
           {
             $rowCounter++;
             $jsonOut = $jsonOut . '{';
+            $jsonOut = $jsonOut . '"id": "' . $row["id"] . '",';
             $jsonOut = $jsonOut . '"title": "' . $row["title"] . '",';
             $jsonOut = $jsonOut . '"img_url": "' . $row["img_url"] . '",';
             $jsonOut = $jsonOut . '"link_url": "' . $row["link_url"] . '",';

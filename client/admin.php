@@ -13,7 +13,10 @@
   <div class="w3-container">
     <input type='text' id='emailIn' placeholder="Email" />
     <input type='password' id='passwordIn' placeholder="Password" />
-    <button id='loginButton'>Log In</button><a href='index.php'>Home</a>
+    <button id='loginButton'>Log In</button>
+    <a href='index.php'>Home</a>
+    <div id='articlesList'>
+    </div>
   </div>
 </body>
 </html>
