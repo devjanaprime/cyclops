@@ -75,7 +75,7 @@ var assembleCard = function( article, clickTags ){
 	if( article.youtube_embed != '' && article.youtube_embed != undefined && article.img_url == '' ){
 		cardText += '<iframe width=100% src="https://www.youtube.com/embed/' + article.youtube_embed + '" frameborder="0" allowfullscreen class="cardImg"></iframe>'; // youtube preview
 	}else{
-		cardText += '<img id="articleOpener" data-index=' + index + ' src="uploads/' + article.img_url + '" alt="' + article.title + ' image" class="cardImg" style="width:100%">'; // article image
+		cardText += '<img id="articleOpener" data-index=' + index + ' src="' + article.img_url + '" alt="' + article.title + ' image" class="cardImg" style="width:100%">'; // article image
 	}
 	cardText += '<div class="w3-container w3-center">';
 	/// - not showing body - ///

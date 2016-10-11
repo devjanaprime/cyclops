@@ -30,7 +30,7 @@ $( document ).ready( function(){
       // assemble object to send if passes tests
       var newArticle = {
         title : title,
-        img_url : img_url,
+        img_url : 'uploads/' + img_url,
         body : body,
         linkUrl : linkUrl,
         linkText : linkText,
@@ -46,8 +46,10 @@ $( document ).ready( function(){
         data: newArticle,
         success: function ( data ){
           console.log( 'ajax success:', data );
-            alert( data );
+          alert( data );
+          if( data =='saved'){
             clearInputs();
+          } // end clear inputs
         } // end success
       }); //end ajax
     } // end no errors
