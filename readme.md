@@ -56,12 +56,17 @@ This object is your basic page info. Of note is the iconSize, which dictates the
 
 ```javascript
 var pageInfo = {
-    title: 'devjana.net',
     author: '@devjana',
     authorLink: 'http://twitter.com/devjana',
-    iconSize: 64
+    iconSize: 64,
+    maxDisplay: 20,
+    title: 'devjana.net',
+    url: 'http://devjana.net/cyclops/client/'
 };
 ```
+* icon size: square icon size for the topper icons
+* maxDisplay: default number of articles to be shown
+* the others should be self-explanatory
 
 verbose
 -------

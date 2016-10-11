@@ -73,35 +73,37 @@ $( document ).ready( function(){
 
 var assembleCard = function( article, clickTags ){
 	var index = articles.indexOf( article );
-	// assemble card text
-	cardText = '';
-	cardText += '<div class="col-sm-6">';
-	cardText += '<div class="w3-col m4 l3">';
-	cardText += '<div class="w3-hover-shadow">';
-	cardText += '<div class="w3-container w3-center" id="articleOpener" data-index=' + index + '>';
-	cardText += '<center><h3 class="w3-hover-opacity">' + article.title + '</h3></center>';
-	cardText += '</div>'; // close title div
-	if( article.youtube_embed != '' && article.youtube_embed != undefined && article.img_url == '' ){
-		cardText += '<iframe width=100% src="https://www.youtube.com/embed/' + article.youtube_embed + '" frameborder="0" allowfullscreen class="cardImg"></iframe>'; // youtube preview
-	}else{
-		cardText += '<img id="articleOpener" data-index=' + index + ' src="' + article.img_url + '" alt="' + article.title + ' image" class="cardImg" style="width:100%">'; // article image
-	}
-	cardText += '<div class="w3-container w3-center">';
-	/// - not showing body - ///
-	// var tempBody = article.body.slice( 0, 61 ) + '...';
-	// cardText += '<p id="articleOpener" data-index=' + index + '>' + tempBody + '</p>';
-	if( clickTags ){
-	// clickable tags?
-	 cardText += '<h6>[ <a href="#" class="tagButton" data-tag=' + article.tag0 + '>' + article.tag0 + '</a>, <a  href="#" class="tagButton" data-tag=' + article.tag1 + '>' + article.tag1 + '</a>, <a href="#" class="tagButton" data-tag=' + article.tag2 + '>' + article.tag2 + '</a> ]</h6>';
-	} // end cickable Tags
-	else{
-	 // not clickable tags
-	 cardText += '<h5>[ ' + article.tag0 + ', ' + article.tag1 + ', ' + article.tag2 + ' ]</h5>';
-	} // end no clickable tags
-	cardText += '</div>'; // close card text div
-	cardText += '</div>'; // close w3-card-12
-	cardText += '</div>'; // close w3-col w3-container m4
-	return cardText;
+	if( article !== undefined ){
+		// assemble card text
+		cardText = '';
+		cardText += '<div class="col-sm-6">';
+		cardText += '<div class="w3-col m4 l3">';
+		cardText += '<div class="w3-hover-shadow">';
+		cardText += '<div class="w3-container w3-center" id="articleOpener" data-index=' + index + '>';
+		cardText += '<center><h3 class="w3-hover-opacity">' + article.title + '</h3></center>';
+		cardText += '</div>'; // close title div
+		if( article.youtube_embed != '' && article.youtube_embed != undefined && article.img_url == '' ){
+			cardText += '<iframe width=100% src="https://www.youtube.com/embed/' + article.youtube_embed + '" frameborder="0" allowfullscreen class="cardImg"></iframe>'; // youtube preview
+		}else{
+			cardText += '<img id="articleOpener" data-index=' + index + ' src="' + article.img_url + '" alt="' + article.title + ' image" class="cardImg" style="width:100%">'; // article image
+		}
+		cardText += '<div class="w3-container w3-center">';
+		/// - not showing body - ///
+		// var tempBody = article.body.slice( 0, 61 ) + '...';
+		// cardText += '<p id="articleOpener" data-index=' + index + '>' + tempBody + '</p>';
+		if( clickTags ){
+		// clickable tags?
+		 cardText += '<h6>[ <a href="#" class="tagButton" data-tag=' + article.tag0 + '>' + article.tag0 + '</a>, <a  href="#" class="tagButton" data-tag=' + article.tag1 + '>' + article.tag1 + '</a>, <a href="#" class="tagButton" data-tag=' + article.tag2 + '>' + article.tag2 + '</a> ]</h6>';
+		} // end cickable Tags
+		else{
+		 // not clickable tags
+		 cardText += '<h5>[ ' + article.tag0 + ', ' + article.tag1 + ', ' + article.tag2 + ' ]</h5>';
+		} // end no clickable tags
+		cardText += '</div>'; // close card text div
+		cardText += '</div>'; // close w3-card-12
+		cardText += '</div>'; // close w3-col w3-container m4
+		return cardText;
+	} // end article exists
 } // end assembleCard
 
 var displayArticleFirst = function ( index ){
@@ -162,7 +164,7 @@ var displayArticle = function ( index ){
 } // end displayArticle
 
 var displayArticleList = function(){
-    if ( verbose ) console.log( 'displayArticleList', articles.length, 'articles:', articles );
+    if ( verbose ) console.log( 'displayArticleList', displayScaler, 'articles:', articles );
 		emptyMiddles();
 		var middlerText = '<div class="w3-row">';
 		// for article in array
@@ -173,13 +175,15 @@ var displayArticleList = function(){
 			displayCount = pageInfo.maxDisplay * displayScaler;
 		}
 		for( var i = 0; i < displayCount; i++ ){
-		// display each article
-			middlerText += assembleCard( articles[ i ], true );
+			// display each article that exists
+			if( articles.indexOf( articles[ i ] ) >= 0 ){
+				middlerText += assembleCard( articles[ i ], true );
+			}
 		}	// end rows
 		middlerText += '</div>'; // close w3-row
 		$( '#middler' ).html( middlerText );
-		if( articles.length > displayCount ){
-			$( '#middler' ).append( '<h2 id="showMore" class="w3-hover-opacity"><u>More</u></h2>' );
+		if( articles.length >= displayCount ){
+			$( '#middler' ).append( '<center><h3 id="showMore" class="w3-hover-opacity"><u>More...</u></h3></center>' );
 		}
 		setImgHeight();
 } // end display middler
