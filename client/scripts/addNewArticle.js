@@ -58,6 +58,31 @@ $( document ).ready( function(){
       }); //end ajax
     } // end no errors
   }); // end addNewButton on click
+
+  $( '#selectImage' ).on( 'click', function(){
+    console.log( 'in selectImage' );
+    getImages();
+  }); // end selectImage
+
+  $( "#imageSelection" ).change( function() {
+    var img = $( "#imageSelection" ).val();
+    $( '#imgPrev' ).html( "<img src='uploads/" + img + "' width=50%>" );
+  });
+
+  var getImages = function(){
+    $.ajax({
+      type: 'GET',
+      url: '../server/getImages.php',
+      success: function( data ){
+        var imageNames = JSON.parse( data );
+        console.log( 'back from AJAX:', imageNames );
+        for( var name in imageNames ) {
+          $( '#imageSelection' ).append( '<option value="' + name + '">' + name + '</option>' );
+        }
+      } // end success
+    }); // end ajax
+  }; // end getImages
+  getImages();
 }); // end doc ready
 
 var clearInputs = function(){
