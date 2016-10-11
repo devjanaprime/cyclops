@@ -97,10 +97,10 @@ var assembleCard = function( article, clickTags ){
 } // end assembleCard
 
 var displayArticleFirst = function ( index ){
-	console.log( 'in displayArticleFirst:', index );
+	if( verbose ) console.log( 'in displayArticleFirst:', index );
 	displayArticleId = index;
-	console.log( 'in displayArticleFirst:', displayArticleId );
-}
+	if( verbose ) console.log( 'in displayArticleFirst:', displayArticleId );
+} // end displayArticleFirst
 
 var displayAdminBar = function(){
 	if( sessionStorage.loggedIn == 'true' ){
@@ -115,7 +115,7 @@ var displayArticle = function ( index ){
 	if( displayArticleId > 0 ){
 		displayArticleId = -1;
 	} // end clear displayArticleId
-	console.log( 'in displayArticle', index );
+	if( verbose ) console.log( 'in displayArticle', index );
     if ( articleMode ) {
       if ( verbose ) console.log( 'exiting article mode' );
       displayArticleList();
@@ -173,7 +173,7 @@ var displayArticlesWithTag = function( tag ){
 		// find matches
 		for( var i=0; i < articles.length ; i++ ){
 			if( articles[ i ].tag0 == tag || articles[ i ].tag1 == tag || articles[ i ].tag2 == tag ){
-				console.log( 'tag match:', articles[ i ] );
+				if( verbose ) console.log( 'tag match:', articles[ i ] );
 				middlerText += assembleCard( articles[ i ], false );
 			} // end articles
 		} // end match
@@ -202,7 +202,6 @@ var displayTopper = function(){
 	 for ( var i = 0; i < headerLinks.length; i++ ) {
      topperText += '<a href="' + headerLinks[i].iconLink + '"><img src="' + headerLinks[i].iconUrl + '" style="margin:16px" width=' + pageInfo.iconSize + ' height=' + pageInfo.iconSize + ' class="w3-hover-opacity"></a>';
 	 } // end header links loop
-	 console.log( 'sessionStorage.loggedIn', sessionStorage.loggedIn );
 	 topperText += '</center>';
 	 $( '#topper' ).html( topperText );
 } // end display bottomer

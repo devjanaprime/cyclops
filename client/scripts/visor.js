@@ -85,7 +85,7 @@ var pageInfo = {
     authorLink: 'http://twitter.com/devjana',
     iconSize: 64,
     title: 'devjana.net',
-    url: 'http://devjana.net/support/cyclops/client/'
+    url: 'http://devjana.net/cyclops/client/'
 };
 // verbose mode for client side console logs?
 var verbose = true;
