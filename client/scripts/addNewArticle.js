@@ -7,7 +7,7 @@ $( document ).ready( function(){
     console.log( 'addNewButton on click');
     // get user input
     var title = $( '#titleIn' ).val();
-    var img_url = $( '#img_urlIn' ).val();
+    var img_url = 'uploads/' + $( '#imageSelection' ).val();
     var body = $( '#bodyIn' ).val();
     var linkUrl = $( '#linkUrlIn' ).val();
     var linkText = $( '#linkTextIn' ).val();
@@ -88,7 +88,6 @@ $( document ).ready( function(){
 var clearInputs = function(){
   console.log( 'in clearInputs' );
   $( '#titleIn' ).val( '' );
-  $( '#img_urlIn' ).val( '' );
   $( '#bodyIn' ).val( '' );
   $( '#linkUrlIn' ).val( '' );
   $( '#linkTextIn' ).val( '' );
