@@ -83,7 +83,7 @@ var pageInfo = {
     author: '@devjana',
     authorLink: 'http://twitter.com/devjana',
     iconSize: 64,
-    maxDisplay: 20,
+    maxDisplay: 2,
     title: 'devjana.net',
     url: 'http://devjana.net/cyclops/client/',
     upArrow: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-128.png',

@@ -164,8 +164,7 @@ var displayArticle = function ( index ){
 } // end displayArticle
 
 var displayArticleList = function(){
-    if ( verbose ) console.log( 'displayArticleList', displayScaler, 'articles:', articles );
-		emptyMiddles();
+  	emptyMiddles();
 		var middlerText = '<div class="w3-row">';
 		// for article in array
 		// display up to articles.length if < max )
@@ -174,6 +173,8 @@ var displayArticleList = function(){
 		}else{
 			displayCount = pageInfo.maxDisplay * displayScaler;
 		}
+		if ( verbose ) console.log( 'displayArticleList', displayCount, 'articles:', articles );
+
 		for( var i = 0; i < displayCount; i++ ){
 			// display each article that exists
 			if( articles.indexOf( articles[ i ] ) >= 0 ){
@@ -182,7 +183,7 @@ var displayArticleList = function(){
 		}	// end rows
 		middlerText += '</div>'; // close w3-row
 		$( '#middler' ).html( middlerText );
-		if( articles.length >= displayCount ){
+		if( displayCount < articles.length ){
 			$( '#middler' ).append( '<center><h3 id="showMore" class="w3-hover-opacity"><u>More...</u></h3></center>' );
 		}
 		setImgHeight();
