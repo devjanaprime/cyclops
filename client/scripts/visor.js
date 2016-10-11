@@ -84,6 +84,7 @@ var pageInfo = {
     author: '@devjana',
     authorLink: 'http://twitter.com/devjana',
     iconSize: 64,
+    maxDisplay: 20,
     title: 'devjana.net',
     url: 'http://devjana.net/cyclops/client/'
 };

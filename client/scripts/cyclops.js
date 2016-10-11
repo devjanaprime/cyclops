@@ -22,8 +22,8 @@ ascii art from http://www.chris.com/ascii/index.php?art=people/body%20parts/eyes
 if ( verbose ) console.log( 'siteMan.js sourced' );
 var articleMode = false;
 var displayArticleId = -1;
-var prototypeImage='';
-var user = '';
+var displayCount=0;
+var displayScaler = 1;
 
 $( document ).ready( function(){
 	if( verbose ) console.log( 'doc ready' );
@@ -51,6 +51,12 @@ $( document ).ready( function(){
 		sessionStorage.loggedIn = false;
 		displayAdminBar();
 	}); // end logInButton on click
+	// showMore button
+	$( 'body' ).on( 'click', '#showMore', function(){
+		if ( verbose ) console.log( 'showMore clicked' );
+		displayScaler++;
+		displayArticleList();
+	}); // end logInButton on click
 	// tag click
 	$( 'body' ).on( 'click', '.tagButton', function(){
     if ( verbose ) console.log( 'tag clicked', $( this ).attr( 'data-tag' ) );
@@ -61,6 +67,8 @@ $( document ).ready( function(){
     if ( verbose ) console.log( 'tagSearchClose clicked' );
     displayArticleList();
 	});
+
+
 }); // end document ready
 
 var assembleCard = function( article, clickTags ){
@@ -131,7 +139,7 @@ var displayArticle = function ( index ){
 			articleText += '<div class="w3-modal-content w3-animate-top">';
 			articleText += '<div class="w3-container">';
 			articleText += '<span onclick="document.getElementById(\'articleModal\').style.display=\'none\'" class="w3-closebtn">&times;</span>';
-			articleText += '<center><h2>' + article.title + '</h2><p>Direct Link: ' + pageInfo.url + '?id=' + index + '</p></center>';
+			articleText += '<center><h2>' + article.title + '</h2></center>';
 			if( article.img_url != '' ){
 				articleText += '<img src="' + article.img_url + '" width=100%>';
 			} // end img check
@@ -144,7 +152,7 @@ var displayArticle = function ( index ){
 			if( article.link_url != '' && article.link_url != undefined ){
 				articleText += '<center><p><b><a href="' + article.link_url + '">' + article.link_text + '</a></b></p></center>';
 			} // end link check
-			articleText += '<center><h6>[ ' + article.tag0 +', ' + article.tag1 + ', ' + article.tag2 + ' ]</h6></center>'
+			articleText += '<center><h6>[ ' + article.tag0 +', ' + article.tag1 + ', ' + article.tag2 + ' ]</h6><p>Direct Link: ' + pageInfo.url + '?id=' + index + '</p></center>'
 			articleText += '</div>'; // end articleModal
 			articleText += '</div>'; // end w3-modal-content
 			articleText += '</div>'; // end w3-container
@@ -158,12 +166,21 @@ var displayArticleList = function(){
 		emptyMiddles();
 		var middlerText = '<div class="w3-row">';
 		// for article in array
-		for( var i = 0; i < articles.length; i++ ){
+		// display up to articles.length if < max )
+		if( articles.length < pageInfo.maxDisplay ){
+			displayCount = articles.length;
+		}else{
+			displayCount = pageInfo.maxDisplay * displayScaler;
+		}
+		for( var i = 0; i < displayCount; i++ ){
 		// display each article
 			middlerText += assembleCard( articles[ i ], true );
 		}	// end rows
 		middlerText += '</div>'; // close w3-row
 		$( '#middler' ).html( middlerText );
+		if( articles.length > displayCount ){
+			$( '#middler' ).append( '<h2 id="showMore" class="w3-hover-opacity"><u>More</u></h2>' );
+		}
 		setImgHeight();
 } // end display middler
 
