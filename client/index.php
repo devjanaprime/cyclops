@@ -19,6 +19,7 @@
        echo '<body onLoad="displayArticleFirst( ' . $article_id . ' )">';
     }
   ?>
+  <div id='adminBar'></div>
   <div id='topper'></div>
   <div id='middler'></div>
    <div id="articleDiv"></div>

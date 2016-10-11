@@ -30,6 +30,7 @@ $( document ).ready( function(){
 	getPageInfo();
 	displayTopper();
 	displayBottomer();
+	displayAdminBar();
 
 	$( window ).on( 'resize', function() {
 		setImgHeight();
@@ -48,7 +49,7 @@ $( document ).ready( function(){
 	$( 'body' ).on( 'click', '#logOut', function(){
 		if ( verbose ) console.log( 'logOut clicked' );
 		sessionStorage.loggedIn = false;
-		displayBottomer();
+		displayAdminBar();
 	}); // end logInButton on click
 	// tag click
 	$( 'body' ).on( 'click', '.tagButton', function(){
@@ -99,6 +100,15 @@ var displayArticleFirst = function ( index ){
 	console.log( 'in displayArticleFirst:', index );
 	displayArticleId = index;
 	console.log( 'in displayArticleFirst:', displayArticleId );
+}
+
+var displayAdminBar = function(){
+	if( sessionStorage.loggedIn == 'true' ){
+		$( '#adminBar' ).append( '<p align="right"><label class="w3-hover-opacity" id="logOut"><u>Log Out</u></label> - <a class="w3-hover-opacity" id="images" href="imageUpload.html">Images</a> - <a class="w3-hover-opacity" id="newArticle" href="create.html">New Article</a></p>' );
+	}
+	else{
+		$( '#adminBar' ).empty();
+	}
 }
 
 var displayArticle = function ( index ){
@@ -179,10 +189,6 @@ var displayBottomer = function(){
 	 $('#bottomer').append( '<center><p>' + pageInfo.title + '</p>' );
 	 var attributionText = '<center><p>Made by <a href="' + pageInfo.authorLink + '">' + pageInfo.author + '</a>' + ' with <a href="https://github.com/devjanaprime/cyclops.git">Cyclops</a></p>';
 	 $( '#bottomer' ).append( attributionText );
-	 if( sessionStorage.loggedIn == 'true' ){
-		 var adminText = '<center><p><a class="w3-hover-opacity" id="logOut">Log Out</a> - <a class="w3-hover-opacity" id="images" href="imageUpload.html">Images</a> - <a class="w3-hover-opacity" id="newArticle" href="create.html">New Article</a></p>'
-	 }
-	 $( '#bottomer' ).append( adminText );
 } // end display bottomer
 
 var displayTopper = function(){
