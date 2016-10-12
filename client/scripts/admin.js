@@ -1,7 +1,18 @@
 $( document ).ready( function(){
 
   $( 'body' ).on( 'click', '.deleteArticleButton', function(){
-    console.log( 'deleteArticleButton clicked for:', $( this ).attr( 'id' ) );
+    var obj = {
+      id: $( this ).attr( 'id' )
+    }; // end obj to send
+    console.log( 'deleteArticleButton clicked for:', obj.id );
+    $.ajax({
+      url:'../server/deleteArticle.php',
+      type: 'POST',
+      data: obj,
+      success: function(){
+        getArticles();
+      }
+    }); //end ajax
   }); // end deleteArticleButton
 
   $( 'body' ).on( 'click', '#loginButton', function(){
@@ -59,7 +70,7 @@ var displayArticlesList = function( articles ){
     $( '#articlesList' ).append( '<hr>' );
   }
   else{
-    $( '#articlesList' ).append( '<hr><h2>Please Log In</h2><hr>' ); 
+    $( '#articlesList' ).append( '<hr><h2>Please Log In</h2><hr>' );
   }
 }; //end displayArticlesList
 
