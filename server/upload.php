@@ -29,7 +29,7 @@ if( $uploadOk == 0 ) {
 // if everything is ok, try to upload file
 } else {
     if( move_uploaded_file( $_FILES[ "fileToUpload" ][ "tmp_name" ], $target_file ) ) {
-        echo 'file uploaded: uploads/' . basename( $_FILES["fileToUpload"]["name"]);
+        header( 'Location: ../client/create.html' ) ;
     } else {
         echo "Yikes, there was an error uploading your file. ";
     }
