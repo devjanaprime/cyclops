@@ -1,3 +1,5 @@
+var articles = [];
+
 $( document ).ready( function(){
 
   $( 'body' ).on( 'click', '.deleteArticleButton', function(){
@@ -43,11 +45,55 @@ $( document ).ready( function(){
 
 
   $( 'body' ).on( 'click', '.moveArticleDownButton', function(){
-    console.log( 'moveArticleDownButton clicked for:', $( this ).attr( 'id' ) );
+    var id = Number( $( this ).attr( 'id' ) );
+    var startId = id;
+    for (var i = 0; i < articles.length; i++) {
+      if( articles[i].id == startId ){
+        var index = i;
+        break;
+      }
+    }
+    var target = index +1;
+    var targetId = articles[ target ].id;
+    var objectToSend={
+      startId: startId,
+      targetId: targetId,
+    };
+    $.ajax({
+      url: '../server/moveArticle.php',
+      type: 'POST',
+      data: objectToSend,
+      success: function ( data ){
+        console.log( data );
+        getArticles();
+      }
+    });
   }); // end deleteArticleButton
 
   $( 'body' ).on( 'click', '.moveArticleUpButton', function(){
-    console.log( 'moveArticleUpButton clicked for:', $( this ).attr( 'id' ) );
+    var id = Number( $( this ).attr( 'id' ) );
+    var startId = id;
+    for (var i = 0; i < articles.length; i++) {
+      if( articles[i].id == startId ){
+        var index = i;
+        break;
+      }
+    }
+    var target = index -1;
+    var targetId = articles[ target ].id;
+    var objectToSend={
+      startId: startId,
+      targetId: targetId,
+    };
+    $.ajax({
+      url: '../server/moveArticle.php',
+      type: 'POST',
+      data: objectToSend,
+      success: function ( data ){
+        console.log( data );
+        getArticles();
+      }
+    });
   }); // end deleteArticleButton
 
   getArticles();
@@ -59,13 +105,13 @@ var clearInputs = function(){
   $( '#passwordIn' ).val( '' );
 }; //end clearInputs
 
-var displayArticlesList = function( articles ){
+var displayArticlesList = function(){
   $( '#articlesList' ).empty();
 
   if( sessionStorage.loggedIn == 'true' ){
     $( '#articlesList' ).append( '<hr><h2>Current Articles:</h2>' );
     for ( var i = 0; i < articles.length; i++ ) {
-      $( '#articlesList' ).append( '<p><img src="' + pageInfo.trashcan + '" width=32 height=32px class="w3-hover-opacity deleteArticleButton" id="' + articles[i].id + '"><img src="' + pageInfo.upArrow + '" width=32 height=32px class="w3-hover-opacity moveArticleUpButton" id="' + articles[i].id + '"><img src="' + pageInfo.downArrow + '" width=32 height=32px class="w3-hover-opacity moveArticleDownButton" id="' + articles[i].id + '"><b>' + articles[i].title + '</b></p>' );
+      $( '#articlesList' ).append( '<p><span title="Delete"><img src="' + pageInfo.trashcan + '" width=32 height=32px class="w3-hover-opacity deleteArticleButton" id="' + articles[i].id + '"></span><span title="Move Up"><img src="' + pageInfo.upArrow + '" width=32 height=32px class="w3-hover-opacity moveArticleUpButton" id="' + articles[i].id + '"></span><span title="Move Down"><img src="' + pageInfo.downArrow + '" width=32 height=32px class="w3-hover-opacity moveArticleDownButton" id="' + articles[i].id + '"></span><b>' + articles[i].title + '</b></p>' );
     }
     $( '#articlesList' ).append( '<hr>' );
   }
@@ -79,7 +125,8 @@ var getArticles = function(){
     url:'../server/getArticles.php',
     type: 'GET',
     success: function ( data ){
-      displayArticlesList( JSON.parse( data ).articles );
+      articles = JSON.parse( data ).articles
+      displayArticlesList();
     } // end success
   }); //end ajax
 }; // end getArticles
