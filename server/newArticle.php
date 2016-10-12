@@ -21,10 +21,10 @@
       VALUES ( '$title', '$img_url', '$body', '$link_url', '$youtube_embed', '$link_text','$tag0', '$tag1', '$tag2' )";
 
       if ( $connect->query( $sql ) === TRUE ){
-          echo "saved";
+        echo 'saved';
       }
       else{
-          echo "error: " . $connect->error;
+        echo "error: " . $connect->error;
       }
       $connect->close();
     }

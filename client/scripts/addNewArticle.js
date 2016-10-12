@@ -45,11 +45,11 @@ $( document ).ready( function(){
         type: 'POST',
         data: newArticle,
         success: function ( data ){
-          console.log( 'ajax success:', data );
-          alert( data );
-          if( data =='saved'){
-            clearInputs();
-          } // end clear inputs
+          if( data == 'saved'){
+            window.location = "index.php";
+          }else{
+            alert( data );
+          }
         } // end success
       }); //end ajax
     } // end no errors
