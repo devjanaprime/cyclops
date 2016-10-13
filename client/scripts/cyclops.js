@@ -114,7 +114,7 @@ var displayArticleFirst = function ( index ){
 
 var displayAdminBar = function(){
 	if( sessionStorage.loggedIn == 'true' ){
-		$( '#adminBar' ).append( '<p align="right"><label class="w3-hover-opacity" id="logOut"><u>Log Out</u></label> - <a class="w3-hover-opacity" id="images" href="imageUpload.html">Images</a> - <a class="w3-hover-opacity" id="newArticle" href="create.html">New Article</a></p>' );
+		$( '#adminBar' ).append( '<p align="right"><label class="w3-hover-opacity" id="logOut"><u>Log Out</u></label> - <a class="w3-hover-opacity" id="admin" href="admin.php">Admin</a> - <a class="w3-hover-opacity" id="images" href="imageUpload.html">Images</a> - <a class="w3-hover-opacity" id="newArticle" href="create.html">New Article</a></p>' );
 	}
 	else{
 		$( '#adminBar' ).empty();

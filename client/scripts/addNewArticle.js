@@ -1,13 +1,23 @@
-console.log( 'addNewArticle.js sourced' );
+var verbose = true;
+if( verbose ) console.log( 'addNewArticle.js sourced' );
 
 $( document ).ready( function(){
-  console.log( 'doc ready' );
+  if( verbose ) console.log( 'doc ready' );
   // get input and check if OK
   $( '#addNewButton' ).on( 'click', function(){
-    console.log( 'addNewButton on click');
+    if( verbose ) console.log( 'addNewButton on click');
     // get user input
     var title = $( '#titleIn' ).val();
-    var img_url = $( '#imageSelection' ).val();
+    if( verbose ) console.log( 'imageUrlIn:', $( '#imageUrlIn' ).val() );
+    // use imageUrlIn if not empty, otherwise use imageSelection
+    if( $( '#imageUrlIn' ).val() == '' ){
+      if( verbose ) console.log( 'imageUrlIn not found, using image selection' );
+      var img_url = 'uploads/' + $( '#imageSelection' ).val();
+    } // end no image URL
+    else{
+      if( verbose ) console.log( 'imageUrlIn found, using that' );
+      img_url = $( '#imageUrlIn' ).val();
+    } // end iamge url
     var body = $( '#bodyIn' ).val();
     var linkUrl = $( '#linkUrlIn' ).val();
     var linkText = $( '#linkTextIn' ).val();
@@ -30,7 +40,7 @@ $( document ).ready( function(){
       // assemble object to send if passes tests
       var newArticle = {
         title : title,
-        img_url : 'uploads/' + img_url,
+        img_url : img_url,
         body : body,
         linkUrl : linkUrl,
         linkText : linkText,
@@ -39,14 +49,14 @@ $( document ).ready( function(){
         tag1 : tag1,
         tag2 : tag2
       };
-      console.log( 'sending:', newArticle );
+      if( verbose ) console.log( 'sending:', newArticle );
       $.ajax({
         url:'../server/newArticle.php',
         type: 'POST',
         data: newArticle,
         success: function ( data ){
           if( data == 'saved'){
-            window.location = "index.php";
+            // window.location = "index.php";
           }else{
             alert( data );
           }
@@ -66,7 +76,7 @@ $( document ).ready( function(){
       url: '../server/getImages.php',
       success: function( data ){
         var imageNames = JSON.parse( data );
-        console.log( 'back from AJAX:', imageNames );
+        if( verbose ) console.log( 'back from AJAX:', imageNames );
         for( var name in imageNames ) {
           $( '#imageSelection' ).append( '<option value="' + name + '">' + name + '</option>' );
         }
@@ -77,7 +87,7 @@ $( document ).ready( function(){
 }); // end doc ready
 
 var clearInputs = function(){
-  console.log( 'in clearInputs' );
+  if( verbose ) console.log( 'in clearInputs' );
   $( '#titleIn' ).val( '' );
   $( '#bodyIn' ).val( '' );
   $( '#linkUrlIn' ).val( '' );
