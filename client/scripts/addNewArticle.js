@@ -56,7 +56,7 @@ $( document ).ready( function(){
         data: newArticle,
         success: function ( data ){
           if( data == 'saved'){
-            // window.location = "index.php";
+            window.location = "index.php";
           }else{
             alert( data );
           }
