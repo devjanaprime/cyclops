@@ -9,19 +9,26 @@ $( document ).ready( function(){
     // get user input
     var title = $( '#titleIn' ).val();
     if( verbose ) console.log( 'imageUrlIn:', $( '#imageUrlIn' ).val() );
-    // use imageUrlIn if not empty, otherwise use imageSelection
-    if( $( '#imageUrlIn' ).val() == '' ){
-      if( verbose ) console.log( 'imageUrlIn not found, using image selection' );
-      var img_url = 'uploads/' + $( '#imageSelection' ).val();
-    } // end no image URL
+    var youtube_embed = $( '#youtube_embedIn' ).val();
+    // only save image_url if !videoOverride
+    var vidOverride = $( '#videoOverride' ).is(':checked');
+    if( vidOverride && youtube_embed !='' ){
+      var img_url = '';
+    }
     else{
-      if( verbose ) console.log( 'imageUrlIn found, using that' );
-      img_url = $( '#imageUrlIn' ).val();
-    } // end iamge url
+      // use imageUrlIn if not empty, otherwise use imageSelection
+      if( $( '#imageUrlIn' ).val() == '' ){
+        if( verbose ) console.log( 'imageUrlIn not found, using image selection' );
+        img_url = 'uploads/' + $( '#imageSelection' ).val();
+      } // end no image URL
+      else{
+        if( verbose ) console.log( 'imageUrlIn found, using that' );
+        img_url = $( '#imageUrlIn' ).val();
+      } // end iamge url
+    }
     var body = $( '#bodyIn' ).val();
     var linkUrl = $( '#linkUrlIn' ).val();
     var linkText = $( '#linkTextIn' ).val();
-    var youtube_embed = $( '#youtube_embedIn' ).val();
     var tag0 = $( '#tag0In' ).val();
     var tag1 = $( '#tag1In' ).val();
     var tag2 = $( '#tag2In' ).val();
