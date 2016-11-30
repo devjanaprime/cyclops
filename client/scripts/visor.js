@@ -49,7 +49,7 @@ var headerLinks = [
         iconLink: 'https://www.facebook.com/devnari'
     },
     {
-        iconUrl: 'http://cdn2.hubspot.net/hub/169461/file-627146167-png/images/Twitter_circle.png?t=1472650328542&width=256&name=Twitter_circle.png',
+        iconUrl: 'https://opensource.org/files/twitterlogo.png',
         iconLink: 'https://twitter.com/devjana'
     },
     {
@@ -91,4 +91,4 @@ var pageInfo = {
     trashcan: 'http://findicons.com/files/icons/1580/devine_icons_part_2/128/trash_recyclebin_empty_closed.png'
 };
 // verbose mode for client side console logs?
-var verbose = true;
+var verbose = false;
